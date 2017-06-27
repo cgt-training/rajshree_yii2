@@ -1,26 +1,27 @@
 <?php
 
-namespace frontend\assets;
+namespace backend\assets;
 
 use yii\web\AssetBundle;
 
 /**
- * Main frontend application asset bundle.
+ * Main backend application asset bundle.
  */
-class AppAsset extends AssetBundle
+class LoginAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/bootstrap.min.css',
         'css/site.css',
-        'css/custom.css',
+        'css/styles.css',
+        'css/bootstrap-responsive.css',
         
     ];
-    public $js = [
-    ];
+    
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'yii\bootstrap\BootstrapPluginAsset',
+         'yii\bootstrap\BootstrapPluginAsset',
     ];
 }

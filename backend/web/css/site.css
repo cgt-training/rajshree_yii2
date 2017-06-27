@@ -100,6 +100,15 @@ a.desc:after {
     padding: 15px;
     border: none;
 }
+@media(min-width: 768px){
+.adminHeader .navbar-inner .collapse {
+    display: block !important;
+}
+.customSideBar .nav-list.collapse {
+    display: block !important;
+}
+}
+
 
 @media(max-width:767px) {
     .nav li > form > button.logout {
@@ -118,3 +127,5 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+.breadcrumb > li + li:before{display: none;}
+.form-control{height: 34px !important;}

@@ -1,15 +1,13 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use Yii;
-use frontend\models\Branch;
-use frontend\models\BranchSearch;
+use backend\models\Branch;
+use backend\models\BranchSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use yii\web\ForbiddenHttpException;
 
 /**
  * BranchController implements the CRUD actions for Branch model.
@@ -22,19 +20,6 @@ class BranchController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => [ 'create','update','view'],
-                'rules' => [
-
-                    [
-                        'actions' => [ 'create','update','view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -79,16 +64,13 @@ class BranchController extends Controller
     public function actionCreate()
     {
         $model = new Branch();
-        if (Yii::$app->user->can('branch_create')) {
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->branch_id]);
-            } else {
-                return $this->render('create', [
-                    'model' => $model,
-                ]);
-            }
-        }else{
-            throw new ForbiddenHttpException;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->branch_id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
     }
 
@@ -101,16 +83,13 @@ class BranchController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        if (Yii::$app->user->can('branch_update')) {
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->branch_id]);
-            } else {
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
-            }
-        }else{
-            throw new ForbiddenHttpException;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->branch_id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
     }
 
@@ -122,12 +101,9 @@ class BranchController extends Controller
      */
     public function actionDelete($id)
     {
-        if (Yii::$app->user->can('branch_delete')) {
-            $this->findModel($id)->delete();
-            return $this->redirect(['index']);
-        }else{
-            throw new ForbiddenHttpException;
-        }
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
     }
 
     /**

@@ -26,53 +26,68 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<div class="AdminHeader">
+    
+    <?= $this->render('@app/views/layouts/header', $_params_); 
+    ?>
     <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
+    // NavBar::begin([
+    //     'brandLabel' => 'My Company',
+    //     'brandUrl' => Yii::$app->homeUrl,
+    //     'options' => [
+    //         'class' => 'navbar-inverse navbar-fixed-top',
+    //     ],
+    // ]);
+    // $menuItems = [
+    //     ['label' => 'Home', 'url' => ['/site/index']],
+    // ];
+    // if (Yii::$app->user->isGuest) {
+    //     $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+    // } else {
+    //     $menuItems[] = '<li>'
+    //         . Html::beginForm(['/site/logout'], 'post')
+    //         . Html::submitButton(
+    //             'Logout (' . Yii::$app->user->identity->username . ')',
+    //             ['class' => 'btn btn-link logout']
+    //         )
+    //         . Html::endForm()
+    //         . '</li>';
+    // }
+    // echo Nav::widget([
+    //     'options' => ['class' => 'navbar-nav navbar-right'],
+    //     'items' => $menuItems,
+    // ]);
+    // NavBar::end();
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
+   
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+<div class="container-fluid">
+            <div class="row-fluid">
+                <?= $this->render('@app/views/layouts/sidebar', $_params_); 
+    ?>
+                
+                <!--/span-->
+                <div class="span9" id="content">
+                <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <?= Alert::widget() ?>
+                <?= $content ?>
+                </div>
+            </div>
+            <hr>
+            <footer class="footer">
+                <div class="container">
+                    <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+
+                    <p class="pull-right"><?= Yii::powered() ?></p>
+                </div>
+            </footer>
+        </div>
+
 
 <?php $this->endBody() ?>
 </body>

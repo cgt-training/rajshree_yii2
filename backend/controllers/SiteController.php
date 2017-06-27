@@ -70,6 +70,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout='loginLayout';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -91,8 +92,9 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
+
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect(['site/index']);
     }
 }

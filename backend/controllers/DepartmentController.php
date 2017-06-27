@@ -1,17 +1,14 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use Yii;
-use frontend\models\Department;
-use frontend\models\Branch;
-use frontend\models\DepartmentSearch;
+use backend\models\Department;
+use backend\models\DepartmentSearch;
+use backend\models\Branch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\helpers\ArrayHelper;
-use yii\filters\AccessControl;
-use yii\web\ForbiddenHttpException;
 
 /**
  * DepartmentController implements the CRUD actions for Department model.
@@ -21,28 +18,13 @@ class DepartmentController extends Controller
     /**
      * @inheritdoc
      */
-    
-
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => [ 'create','update','view'],
-                'rules' => [
-                   
-                    [
-                        'actions' => [ 'create','update','view'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];
@@ -84,16 +66,12 @@ class DepartmentController extends Controller
     {
         $model = new Department();
 
-        if (Yii::$app->user->can('department_create')) {
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->department_id]);
-            } else {
-                return $this->render('create', [
-                    'model' => $model,
-                ]);
-            }
-        }else{
-             throw new ForbiddenHttpException;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->department_id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
     }
 
@@ -107,16 +85,12 @@ class DepartmentController extends Controller
     {
         $model = $this->findModel($id);
 
-        if (Yii::$app->user->can('department_update')) {
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->department_id]);
-            }else{
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
-            }
-        }else{
-             throw new ForbiddenHttpException;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->department_id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
     }
 
@@ -128,13 +102,9 @@ class DepartmentController extends Controller
      */
     public function actionDelete($id)
     {
-        if (Yii::$app->user->can('department_delete')) {
-            $this->findModel($id)->delete();
+        $this->findModel($id)->delete();
 
-            return $this->redirect(['index']);
-        }else{
-             throw new ForbiddenHttpException;
-        }
+        return $this->redirect(['index']);
     }
 
     /**
@@ -148,7 +118,6 @@ class DepartmentController extends Controller
     {
         if (($model = Department::findOne($id)) !== null) {
             return $model;
-
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
@@ -167,5 +136,4 @@ class DepartmentController extends Controller
         echo $options;
     
     }
-
 }
