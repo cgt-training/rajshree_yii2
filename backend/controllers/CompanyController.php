@@ -65,6 +65,8 @@ class CompanyController extends Controller
     {
         $model = new Company();
 
+       // $model = $this->findModel(2);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->company_id]);
         } else {

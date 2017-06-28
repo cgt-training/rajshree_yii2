@@ -12,10 +12,11 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/bootstrap.min.css',
+       // 'css/bootstrap.min.css',
         'css/site.css',
         'css/styles.css',
         'css/bootstrap-responsive.css',
+        'css/plugin/bootstrap.min.css',
         'assets/easypiechart/jquery.easy-pie-chart.css',
         
     ];

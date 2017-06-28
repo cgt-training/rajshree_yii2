@@ -50,7 +50,7 @@ public function afterFind ()
     {
       
         $this->company_created = strtotime ($this->company_created);
-        $this->company_created = date ('m/d/Y', $this->company_created);
+        $this->company_created = date ('Y-m-d', $this->company_created);
 
         parent::afterFind ();
     }

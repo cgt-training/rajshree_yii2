@@ -62,7 +62,7 @@ class Branch extends \yii\db\ActiveRecord
     {
       
         $this->branch_created = strtotime ($this->branch_created);
-        $this->branch_created = date ('m/d/Y', $this->branch_created);
+        $this->branch_created = date ('Y-m-d', $this->branch_created);
 
         parent::afterFind ();
     }

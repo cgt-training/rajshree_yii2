@@ -10,29 +10,30 @@ use yii\widgets\Pjax;
 $this->title = 'Companies';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="company-index">
+<div class="row-fluid">                        
+    <div class="block">
+        <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left"><?= Html::encode($this->title) ?></div>
+        </div>
+        <div class="block-content collapse in">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+        <p>
+            <?= Html::a('Create Company', ['create'], ['class' => 'btn btn-success']) ?>
+        </p>
+            <?php Pjax::begin(); ?>    <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
+                    'company_name',
+                    'company_email:email',
+                    'company_address',
+                    'company_profile',                 
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]); ?>
+            <?php Pjax::end(); ?>
+        </div>
+    </div>
+</div>
 
-    <p>
-        <?= Html::a('Create Company', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            //'company_id',
-            'company_name',
-            'company_email:email',
-            'company_address',
-            'company_profile',
-            // 'company_created',
-            // 'company_status',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-<?php Pjax::end(); ?></div>

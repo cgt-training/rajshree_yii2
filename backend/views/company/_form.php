@@ -9,36 +9,45 @@ use kartik\date\DatePicker;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="company-form">
+<div class="span12">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['class' => 'form-horizontal']]); ?>
+         <fieldset>
+            <?=$form->field($model, 'company_name',['options'=>['tag' => 'div','class' => 'form-group control-group'],'template' => '{label}<div class="controls">{input}{error}</div>'])->textInput(['maxlength' => true,'class'=>'input-xlarge form-control']) ;
+            ?>
 
-    <?= $form->field($model, 'company_name')->textInput(['maxlength' => true]) ?>
+            <?=$form->field($model, 'company_email',['options'=>['tag' => 'div','class' => 'form-group control-group'],'template' => '{label}<div class="controls">{input}{error}</div>'])->textInput(['maxlength' => true,'class'=>'input-xlarge form-control']) ;
+            ?>
 
-    <?= $form->field($model, 'company_email')->textInput(['maxlength' => true]) ?>
+            <?=$form->field($model, 'company_address',['options'=>['tag' => 'div','class' => 'form-group control-group'],'template' => '{label}<div class="controls">{input}{error}</div>'])->textInput(['maxlength' => true,'class'=>'input-xlarge form-control']) ;
+            ?>
 
-    <?= $form->field($model, 'company_address')->textInput(['maxlength' => true]) ?>
+            <?=$form->field($model, 'company_profile',['options'=>['tag' => 'div','class' => 'form-group control-group'],'template' => '{label}<div class="controls">{input}{error}</div>'])->textInput(['maxlength' => true,'class'=>'input-xlarge form-control']) ;
+            ?>
 
-    <?= $form->field($model, 'company_profile')->textInput(['maxlength' => true]) ?>
+            
 
+             <?=$form->field($model, 'company_created',['options'=>['tag' => 'div','class' => 'form-group control-group'],'template' => '{label}<div class="controls">{input}{error}</div>'])->widget(DatePicker::classname(),[
+                'pluginOptions' => [
+                    'autoclose'=>true,  
+                    'format' =>'yyyy-mm-dd',                                
+                ]
+            ]);
+            ?>
 
-<?php 
+            
 
-    echo $form->field($model, 'company_created')->widget(DatePicker::classname(), [
-    //'options' => ['placeholder' => 'Enter birth date ...'],
+            <?=$form->field($model, 'company_status',['options'=>['tag' => 'div','class' => 'form-group control-group'],'template' => '{label}<div class="controls">{input}{error}</div>'])->dropDownList([ 'active' => 'Active', 'inactive' => 'Inactive'],['prompt' => '', 'class'=>'input-xlarge form-control']); ?>
 
-    'pluginOptions' => [
-        'autoclose'=>true,  
-        'format' =>'yyyy-mm-dd', 
-    ]
-]);
-?>
-    <?= $form->field($model, 'company_status')->dropDownList([ 'active' => 'Active', 'inactive' => 'Inactive', ], ['prompt' => '']) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+                <div class="form-group form-actions">
+                    <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? ' btn btn-primary' : 'btn btn-primary']) ?>
+                </div>
+         </fieldset> 
 
     <?php ActiveForm::end(); ?>
 
 </div>
+
+
+    
+
