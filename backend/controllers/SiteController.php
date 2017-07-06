@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use backend\models\AuthAssignment;
 
 /**
  * Site controller
@@ -72,13 +73,24 @@ class SiteController extends Controller
     {
         $this->layout='loginLayout';
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            $this->redirect(['site/login']);
         }
-
         $model = new LoginForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
+            $userData=Yii::$app->user->identity;
+            $id=Yii::$app->user->identity->id;
+            $model1 = $this->findModel($id); 
+
+            if($model1['item_name']!='admin'){             
+                Yii::$app->user->logout();
+                return $this->redirect(['site/login']);
+            }else{
+                return $this->redirect(['site/index']);
+
+            }
+
+        } else { 
             return $this->render('login', [
                 'model' => $model,
             ]);
@@ -95,6 +107,14 @@ class SiteController extends Controller
 
         Yii::$app->user->logout();
 
-        return $this->redirect(['site/index']);
+        return $this->redirect(['site/login']);
+    }
+
+    protected function findModel($id)
+    {
+        $model = AuthAssignment::find()
+        ->where(['user_id' => $id])
+        ->one();
+        return $model->toArray();
     }
 }

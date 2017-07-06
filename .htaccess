@@ -6,8 +6,9 @@ RewriteCond %{REQUEST_URI} ^/rajshree_yii2/(admin)
 RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
 RewriteRule ^admin/css/(.*)$ backend/web/css/$1 [L]
 RewriteRule ^admin/js/(.*)$ backend/web/js/$1 [L]
+RewriteRule ^admin/uploads/(.*)$ backend/web/uploads/$1 [L]
 
-RewriteCond %{REQUEST_URI} !^/rajshree_yii2/backend/web/(assets|css|js)/  
+RewriteCond %{REQUEST_URI} !^/rajshree_yii2/backend/web/(assets|css|js|uploads)/  
 RewriteCond %{REQUEST_URI} ^/rajshree_yii2/(admin) 
 RewriteRule ^.*$ backend/web/index.php [L]
 
@@ -18,7 +19,7 @@ RewriteRule ^css/(.*)$ frontend/web/css/$1 [L]
 RewriteRule ^img/(.*)$ frontend/web/img/$1 [L]
 RewriteRule ^js/(.*)$ frontend/web/js/$1 [L]
 
-RewriteCond %{REQUEST_URI} !^/rajshree_yii2/(frontend|backend)/web/(assets|css|img|js)/  
+RewriteCond %{REQUEST_URI} !^/rajshree_yii2/(frontend|backend)/web/(assets|css|img|js|uploads)/  
 RewriteCond %{REQUEST_URI} !index.php
 RewriteCond %{REQUEST_FILENAME} !-f [OR]
 RewriteCond %{REQUEST_FILENAME} !-d

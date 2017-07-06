@@ -148,3 +148,4 @@ a.desc:after {
 .breadcrumb li:after{content: '|';color:#999 ;padding:5px;}
 .breadcrumb li:last-child:after{display: none;}
 .grid-view{overflow-x: scroll;}
+.thing{padding: 10px;}

@@ -44,7 +44,7 @@ use yii\helpers\Url;
                         </ul>
                         <ul class="nav">
                             <li class="active">
-                                <a href="#">Dashboard</a>
+                            <?= Html::a('Dashboard', ['site/index', 'id' => '']) ?>
                             </li>
                             
                             <!-- <li class="dropdown">

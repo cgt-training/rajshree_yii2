@@ -212,3 +212,4 @@ body {
   font-size: 12px;
   padding-left: 2px;
 }
+.bs-docs-sidenav > li > a{padding: 8px 14px !important;}
