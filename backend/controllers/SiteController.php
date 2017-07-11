@@ -115,6 +115,11 @@ class SiteController extends Controller
         $model = AuthAssignment::find()
         ->where(['user_id' => $id])
         ->one();
+        if($model!=''){
         return $model->toArray();
+    }else{
+        return $model;
+
+    }
     }
 }

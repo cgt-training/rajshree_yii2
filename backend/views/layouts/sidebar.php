@@ -4,7 +4,7 @@ use yii\helpers\Html;
 $activeController= Yii::$app->controller->id;
 $activeAction = Yii::$app->controller->action->id;
 
-$DashboardClass=$departmentClass=$branchClass=$companyClass=$userClass=$permissionsClass='';
+$DashboardClass=$departmentClass=$branchClass=$companyClass=$userClass=$permissionsClass=$pAssignmentClass='';
 
 if($activeController=='site' && $activeAction=='index'){
     $DashboardClass='active';
@@ -23,6 +23,10 @@ if($activeController=='department'){
 }
 if($activeController=='permission'){
     $permissionsClass='active';
+}
+
+if($activeController=='passignment'){
+    $pAssignmentClass='active';
 }
 
 ?>
@@ -52,6 +56,10 @@ if($activeController=='permission'){
 
         <li class="<?=$permissionsClass?>">            
             <?= Html::a('Permissions', ['permission/index', 'id' => '']) ?>
+        </li>
+
+        <li class="<?=$pAssignmentClass?>">            
+            <?= Html::a('Permissions Assignment', ['passignment/index', 'id' => '']) ?>
         </li>
        
     </ul>

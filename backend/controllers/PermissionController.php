@@ -104,6 +104,7 @@ class PermissionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
         $auth = Yii::$app->authManager;
 
         if ($model->load(Yii::$app->request->post())) {
@@ -120,9 +121,8 @@ class PermissionController extends Controller
                 ]);
             }
 
-            $this->findModel($id)->delete();
 
-            $auth->add($createPost);
+            $auth->update($id,$createPost);
 
              return $this->redirect(['index']);
         } else {

@@ -149,3 +149,6 @@ a.desc:after {
 .breadcrumb li:last-child:after{display: none;}
 .grid-view{overflow-x: scroll;}
 .thing{padding: 10px;}
+.permissionForm .checkbox label{display: inline-block;}
+.permissionForm .checkbox input[type=checkbox]{display: inline-block;left: 26px;}
+.permissionForm .checkbox {position: relative;}
