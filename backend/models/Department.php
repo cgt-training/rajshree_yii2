@@ -38,7 +38,7 @@ class Department extends \yii\db\ActiveRecord
         return [
             [['company_fk_id', 'branch_fk_id', 'department_name', 'department_created'], 'required'],
            // [['company_fk_id', 'branch_fk_id'], 'integer'],
-            [['department_created'], 'safe'],
+           // [['department_created'], 'safe'],
             [['department_status'], 'string'],
             [['department_name'], 'string', 'max' => 255],
             [['company_fk_id'], 'exist', 'skipOnError' => true, 'targetClass' => Company::className(), 'targetAttribute' => ['company_fk_id' => 'company_id']],
@@ -62,7 +62,8 @@ class Department extends \yii\db\ActiveRecord
     }
 
     public function behaviors()
-    {
+    {   
+
         return [
             [
                 'class' => AttributeBehavior::className(),
@@ -81,7 +82,7 @@ class Department extends \yii\db\ActiveRecord
     {
       
         $this->department_created = strtotime ($this->department_created);
-        $this->department_created = date ('m/d/Y', $this->department_created);
+        $this->department_created = date ('Y-m-d', $this->department_created);
 
         parent::afterFind ();
     }

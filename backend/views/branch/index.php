@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use backend\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\BranchSearch */
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'branch_created',
             'branch_status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'backend\grid\ActionColumn'],
         ],
         ]); ?>
         <?php Pjax::end(); ?>

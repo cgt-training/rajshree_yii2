@@ -47,6 +47,8 @@ class PermissionSearch extends Permission
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            
+             
         ]);
 
         $this->load($params);
@@ -82,6 +84,8 @@ class PermissionSearch extends Permission
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+           'pagination' => [ 'pageSize' => isset($params['noItemSelected'])?$params['noItemSelected']:10 ],
+
         ]);     
 
         $this->load($params);
@@ -99,8 +103,6 @@ class PermissionSearch extends Permission
 
         $query->andFilterWhere(['like', 'name', $this->name])
         ->andFilterWhere(['like', 'description', $this->description]);
-
-
         return $dataProvider;
     }
 }

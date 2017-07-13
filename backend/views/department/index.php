@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use backend\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\DepartmentSearch */
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'department_created',
                     // 'department_status',
 
-                    ['class' => 'yii\grid\ActionColumn'],
+                    ['class' => 'backend\grid\ActionColumn'],
                 ],
             ]); ?>
         <?php Pjax::end(); ?>

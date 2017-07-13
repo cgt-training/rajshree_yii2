@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\User */
@@ -25,6 +26,11 @@ $activeAction = Yii::$app->controller->action->id;
             <?php
                 }
             ?>
+
+            <?=$form->field($searchModel, 'name',['options'=>['tag' => 'div','class' => 'form-group control-group'],'template' => '{label}<div class="controls">{input}{error}</div>'])->dropDownList(ArrayHelper::map($allParent,'name','name'),
+            ['prompt'=>'Select parent', 'class'=>'input-xlarge form-control']
+            )->label('User Role');?>   
+
                    
             <?=$form->field($model, 'file',['options'=>['tag' => 'div','class' => 'form-group control-group'],'template' => '{label}<div class="controls">{input}{error}</div>'])->fileInput();?>
 

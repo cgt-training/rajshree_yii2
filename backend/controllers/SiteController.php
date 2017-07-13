@@ -7,6 +7,12 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use backend\models\AuthAssignment;
+use backend\models\UserSearch;
+use backend\models\BranchSearch;
+use backend\models\CompanySearch;
+use backend\models\DepartmentSearch;
+use backend\models\PermissionSearch;
+use backend\models\PassignmentSearch;
 
 /**
  * Site controller
@@ -61,14 +67,40 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $userModel = new UserSearch();
+        $allUser = $userModel->find()->All();
+       
+        $branchModel = new BranchSearch();
+        $allBranch = $branchModel->find()->All();
+ 
+        $companyModel = new CompanySearch();
+        $allCompany = $companyModel->find()->All();
+
+        $departmentModel = new DepartmentSearch();
+        $allDepartment = $departmentModel->find()->All();
+        
+        $auth = Yii::$app->authManager;
+        $allRoles=$auth->getRoles();
+
+        $auth = Yii::$app->authManager;
+        $permission=$auth->getPermissions();       
+       
+        return $this->render('index', [
+            'allUser' => $allUser,
+            'allBranch' => $allBranch,
+            'allCompany' => $allCompany,
+            'allDepartment' => $allDepartment,
+            'allRoles' => $allRoles,
+            'allpermission' => $permission,
+        ]);     
     }
 
     /**
      * Login action.
      *
      * @return string
-     */
+     **/
+
     public function actionLogin()
     {
         $this->layout='loginLayout';
@@ -104,9 +136,7 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-
         Yii::$app->user->logout();
-
         return $this->redirect(['site/login']);
     }
 

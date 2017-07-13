@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use backend\models\PermissionSearch;
+
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -65,15 +67,27 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
+        $searchModel=new PermissionSearch();
+        $allParent=  $searchModel->find()->where('type = :type', [':type' => '1'])
+->all();
 
-        if ($model->load(Yii::$app->request->post())) {
+        if($model->load(Yii::$app->request->post())) {
+            $request= Yii::$app->request->post(); 
+            $posted_role=$request['PermissionSearch']['name'];
             if ($user = $model->createuser()) { 
-                    return $this->redirect('index');
+
+                $auth = \Yii::$app->authManager;
+                $authorRole = $auth->getRole($posted_role);
+                $auth->assign($authorRole, $user->getId());
+                return $this->redirect('index');
+                
             }
         }
        
         return $this->render('create', [
             'model' => $model,
+            'allParent'=>$allParent,
+            'searchModel' =>$searchModel,
         ]);
     }
 
@@ -86,12 +100,21 @@ class UserController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $OldRole=Yii::$app->authManager->getRolesByUser($id);
+        $OldRole = key($OldRole);
+        $searchModel=new PermissionSearch();
 
+       $allParent=  $searchModel->find()->where('type = :type', [':type' => '1'])
+->all();
 
-       // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $searchModel->name=$OldRole;       
+
+      
         if ($model->load(Yii::$app->request->post())) {
 
             $imageName=$model->username;
+            $request= Yii::$app->request->post(); 
+            $posted_role=$request['PermissionSearch']['name'];
 
             $model->file = UploadedFile::getInstance($model, 'file');
             if($model->file !=''){
@@ -99,17 +122,31 @@ class UserController extends Controller
                 $model->user_image='uploads/' . $imageName . '.' . $model->file->extension;
             }
             $model->updated_at=date('dmY');
-            if($model->save()){
+            if($user=$model->save()){
+
+                $manager = Yii::$app->authManager;
+                if($OldRole!=''){
+                
+                    $item = $manager->getRole($OldRole);
+                    $item = $item ? : $manager->getPermission($OldRole);
+                    $manager->revoke($item,$id);
+                }
+                $authorRole = $manager->getRole($posted_role);
+                $manager->assign($authorRole, $id);
                 return $this->redirect(['view', 'id' => $model->id]);
             }else{
                 return $this->render('update', [
                     'model' => $model,
+                    'allParent'=>$allParent,
+                    'searchModel' =>$searchModel,
                 ]);
             }
 
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'allParent'=>$allParent,
+                'searchModel' =>$searchModel,
             ]);
         }
     }

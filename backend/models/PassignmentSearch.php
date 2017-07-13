@@ -82,6 +82,7 @@ class PassignmentSearch extends Passignment
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [ 'pageSize' => isset($params['noItemSelected'])?$params['noItemSelected']:10 ],
         ]);     
 
         $this->load($params);

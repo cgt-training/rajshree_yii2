@@ -121,7 +121,6 @@ class PermissionController extends Controller
                 ]);
             }
 
-
             $auth->update($id,$createPost);
 
              return $this->redirect(['index']);

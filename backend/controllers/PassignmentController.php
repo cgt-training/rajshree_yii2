@@ -97,10 +97,9 @@ class PassignmentController extends Controller
 
                 $role = Yii::$app->authManager->getRole($model->parent);                
                 Yii::$app->authManager->removeChildren($role);    
-                            
-                foreach($request['PassignmentSearch']['child'] as $key => $value) { 
 
-                   
+                foreach($request['PassignmentSearch']['child'] as $key => $value) { 
+                
                     $author = $auth->createRole($model->parent);
                     $createPost = $auth->createPermission($value);                    
                     $auth->addChild($author, $createPost);
@@ -157,7 +156,8 @@ class PassignmentController extends Controller
             if($request['PassignmentSearch']['child']!=''){
                 //Passignment::deleteAll(['parent' => $model->parent]);
 
-                $role = Yii::$app->authManager->getRole($model->parent);                
+                $role = Yii::$app->authManager->getRole($model->parent);    
+                           
                 Yii::$app->authManager->removeChildren($role);                    
                
                 foreach($request['PassignmentSearch']['child'] as $key => $value) {                
@@ -215,5 +215,4 @@ class PassignmentController extends Controller
         }
     }
 }
-
 

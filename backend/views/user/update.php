@@ -18,6 +18,8 @@ $this->params['breadcrumbs'][] = 'Update';
         <div class="block-content collapse in">
 		    <?= $this->render('_form', [
 		        'model' => $model,
+		        'allParent' => $allParent,
+		        'searchModel' =>$searchModel,
 		    ]) ?>
 		</div>
 	</div>

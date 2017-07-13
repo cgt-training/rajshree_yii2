@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use backend\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CompanySearch */
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'company_email:email',
                     'company_address',
                     'company_profile',                 
-                    ['class' => 'yii\grid\ActionColumn'],
+                    ['class' => 'backend\grid\ActionColumn'],
                 ],
             ]); ?>
             <?php Pjax::end(); ?>

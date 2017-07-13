@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use backend\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\BranchSearch */
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'parent',            
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'backend\grid\ActionColumn'],
         ],
         ]); ?>
         <?php Pjax::end(); ?>

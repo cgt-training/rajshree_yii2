@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\grid\GridView;
+use backend\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\BranchSearch */
@@ -24,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+       // 'layout' => "{items}\n{summary}\n{pager}",
         
         
         'columns' => [
@@ -36,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'label' => 'Type'
             ], 
             'description',
-            ['class' => 'yii\grid\ActionColumn'],
+             ['class' => 'backend\grid\ActionColumn'],
         ],
         ]); ?>
         <?php Pjax::end(); ?>

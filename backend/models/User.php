@@ -65,6 +65,7 @@ class User extends \common\models\User
             ['email', 'string', 'max' => 255],
             ['email', 'unique'],
 
+
         ];
     }
 
@@ -108,7 +109,7 @@ class User extends \common\models\User
             $this->file->saveAs('uploads/' . $imageName . '.' . $this->file->extension);
             $user->user_image='uploads/' . $imageName . '.' . $this->file->extension;
         }      
-
+       
         return $user->save() ? $user : null;
     }
 

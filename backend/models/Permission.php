@@ -49,6 +49,7 @@ class Permission extends \yii\db\ActiveRecord
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+             'pagination' => [ 'pageSize' => 10 ],
         ]);     
 
         $this->load($params);

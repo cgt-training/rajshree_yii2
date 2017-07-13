@@ -29,6 +29,10 @@ if($activeController=='passignment'){
     $pAssignmentClass='active';
 }
 
+if($activeController=='user'){
+    $userClass='active';
+}
+
 ?>
 <div class="span3 customSideBar" id="sidebar">
     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">

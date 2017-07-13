@@ -39,6 +39,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             
             'email:email',
+            ['attribute'=>'role',
+             'value'  => function ($model) {
+                 $OldRole=Yii::$app->authManager->getRolesByUser($model->id);
+                 $OldRole = key($OldRole);
+                return $OldRole;
+            },            
+            'label' => 'Role'
+            ], 
             'created_at',
             'updated_at',
         ],

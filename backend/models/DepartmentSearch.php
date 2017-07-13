@@ -47,6 +47,7 @@ class DepartmentSearch extends Department
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [ 'pageSize' => isset($params['noItemSelected'])?$params['noItemSelected']:10 ],
         ]);
 
         $this->load($params);

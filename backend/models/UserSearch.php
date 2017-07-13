@@ -41,12 +41,14 @@ class UserSearch extends User
      */
     public function search($params)
     {
+        
         $query = User::find();
-
+        
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [ 'pageSize' => isset($params['noItemSelected'])?$params['noItemSelected']:10 ],
         ]);
 
         $this->load($params);
@@ -71,6 +73,8 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'password_hash', $this->password_hash])
             ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
             ->andFilterWhere(['like', 'email', $this->email]);
+
+       
 
         return $dataProvider;
     }
