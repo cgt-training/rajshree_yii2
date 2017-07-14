@@ -32,8 +32,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'companyFk.company_name',
             'branch_name',
             'branch_created',
-            //Yii::$app->formatter->asDatetime('branch_created'),
-
             'branch_status',
         ],
     ]) ?>

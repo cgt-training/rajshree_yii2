@@ -37,7 +37,7 @@ class Branch extends \yii\db\ActiveRecord
     {
         return [
             [['company_fk_id', 'branch_name', 'branch_created'], 'required'],
-           // [['company_fk_id'], 'integer'],
+          
             [['branch_created'], 'safe'],
             [['branch_status'], 'string'],
             [['branch_name'], 'string', 'max' => 255],

@@ -153,3 +153,4 @@ a.desc:after {
 .permissionForm .checkbox label{display: inline-block;}
 .permissionForm .checkbox input[type=checkbox]{display: inline-block;left: 26px;}
 .permissionForm .checkbox {position: relative;}
+.customSummary{margin-top: 30px;}

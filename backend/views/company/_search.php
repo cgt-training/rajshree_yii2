@@ -23,11 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'company_address') ?>
 
-    <?= $form->field($model, 'company_profile') ?>
-
-    <?php // echo $form->field($model, 'company_created') ?>
-
-    <?php // echo $form->field($model, 'company_status') ?>
+    <?= $form->field($model, 'company_profile') ?>   
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

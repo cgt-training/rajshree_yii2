@@ -2,19 +2,6 @@
 use yii\helpers\Html;
 ?>
                     <div class="row-fluid">
-                        <!-- block -->
-                        <div class="block">
-                            <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Statistics</div>
-                                <div class="pull-right"><span class="badge badge-warning">View More</span>
-
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <!-- /block -->
-                    </div>
-                    <div class="row-fluid">
                         <div class="span6">
                             <!-- block -->
                             <div class="block">
@@ -51,6 +38,8 @@ use yii\helpers\Html;
                                         ?>                                        
                                         </tbody>
                                     </table>
+                                    <div class="text-center"><?= Html::a('View All', ['user/index']) ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /block -->
@@ -90,6 +79,8 @@ use yii\helpers\Html;
                                             ?>
                                         </tbody>
                                     </table>
+                                     <div class="text-center"><?= Html::a('View All', ['brnach/index']) ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /block -->
@@ -131,6 +122,8 @@ use yii\helpers\Html;
                                            ?>
                                         </tbody>
                                     </table>
+                                    <div class="text-center"><?= Html::a('View All', ['company/index']) ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /block -->
@@ -170,6 +163,8 @@ use yii\helpers\Html;
                                             ?>
                                         </tbody>
                                     </table>
+                                     <div class="text-center"><?= Html::a('View All', ['department/index']) ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /block -->
@@ -205,10 +200,15 @@ use yii\helpers\Html;
                                             </tr>
                                             <?php
                                             $m++;
+                                             if($m>3){
+                                                    break;
+                                                }
                                             }
                                            ?>
                                         </tbody>
                                     </table>
+                                    <div class="text-center"><?= Html::a('View All', ['permission/index']) ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /block -->
@@ -242,10 +242,15 @@ use yii\helpers\Html;
                                             </tr>
                                             <?php
                                                 $n++;
+                                                if($n>3){
+                                                    break;
+                                                }
                                                 }
                                             ?>
                                         </tbody>
                                     </table>
+                                     <div class="text-center"><?= Html::a('View All', ['permission/index']) ?>
+                                    </div>
                                 </div>
                             </div>
                             <!-- /block -->

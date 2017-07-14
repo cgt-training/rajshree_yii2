@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
 
-                   // 'department_id',
                     ['attribute'=>'company_fk_id',
                     'value' =>'companyFk.company_name',
                     'label' =>'Company Name',
@@ -37,8 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],  
                     'department_name',
                     'department_created',
-                    // 'department_status',
-
                     ['class' => 'backend\grid\ActionColumn'],
                 ],
             ]); ?>

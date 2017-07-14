@@ -37,9 +37,7 @@ class User extends \common\models\User
     public function afterFind ()
     {
       
-        //$this->created_at = strtotime($this->created_at);
         $this->created_at = date ('Y-m-d', $this->created_at);
-       // $this->updated_at = strtotime ($this->updated_at);
         $this->updated_at = date ('Y-m-d', $this->updated_at);
 
         parent::afterFind ();
@@ -57,7 +55,7 @@ class User extends \common\models\User
             [['created_at','updated_at'],'safe'],
             ['username', 'trim'],
             [['file'],'file'],
-            //['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
+          
             ['username', 'unique'],
             ['username', 'string', 'min' => 2, 'max' => 255],
             ['email', 'trim'],

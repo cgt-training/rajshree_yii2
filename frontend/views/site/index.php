@@ -20,7 +20,6 @@ use yii\helpers\Html;
                             </div>
                         </div>
                         <div class="image_section">
-                            <!-- <img src="images/Layer 4.jpg" class="img-responsive" alt=""> -->
                             <?=Html::img('@web/img/Layer 4.jpg', ['class'=>'img-responsive'])?>
                         </div>
                         <div class="Description">

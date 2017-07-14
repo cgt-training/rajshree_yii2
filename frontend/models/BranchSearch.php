@@ -62,7 +62,6 @@ class BranchSearch extends Branch
         // grid filtering conditions
         $query->andFilterWhere([
             'branch_id' => $this->branch_id,
-           // 'company_fk_id' => $this->company_fk_id,
             'branch_created' => $this->branch_created,
 
         ]);

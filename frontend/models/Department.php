@@ -61,7 +61,6 @@ class Department extends \yii\db\ActiveRecord
     {
         return [
             [['company_fk_id', 'branch_fk_id', 'department_name', 'department_created'], 'required'],
-            //[['company_fk_id', 'branch_fk_id'], 'integer'],
             [['department_created'], 'safe'],
             [['department_status'], 'string'],
             [['department_name'], 'string', 'max' => 255],

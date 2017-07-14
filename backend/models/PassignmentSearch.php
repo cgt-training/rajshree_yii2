@@ -63,8 +63,7 @@ class PassignmentSearch extends Passignment
         // grid filtering conditions
         $query->andFilterWhere([
             'department_id' => $this->department_id,
-           // 'company_fk_id' => $this->company_fk_id,
-            //'branch_fk_id' => $this->branch_fk_id,
+         
             'department_created' => $this->department_created,
         ]);
 

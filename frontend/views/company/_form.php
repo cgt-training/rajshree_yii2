@@ -25,7 +25,6 @@ use kartik\date\DatePicker;
     <?php 
 
     echo $form->field($model, 'company_created')->widget(DatePicker::classname(), [
-    //'options' => ['placeholder' => 'Enter birth date ...'],
 
     'pluginOptions' => [
         'autoclose'=>true,  

@@ -68,17 +68,17 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $userModel = new UserSearch();
-        $allUser = $userModel->find()->All();
+        $allUser = $userModel->find()->limit('3')->All();
        
         $branchModel = new BranchSearch();
-        $allBranch = $branchModel->find()->All();
+        $allBranch = $branchModel->find()->limit('3')->All();
  
         $companyModel = new CompanySearch();
-        $allCompany = $companyModel->find()->All();
+        $allCompany = $companyModel->find()->limit('3')->All();
 
         $departmentModel = new DepartmentSearch();
-        $allDepartment = $departmentModel->find()->All();
-        
+        $allDepartment = $departmentModel->find()->limit('3')->All();
+
         $auth = Yii::$app->authManager;
         $allRoles=$auth->getRoles();
 
@@ -116,6 +116,7 @@ class SiteController extends Controller
 
             if($model1['item_name']!='admin'){             
                 Yii::$app->user->logout();
+                Yii::$app->session->setFlash('info', "You are not authorised user.");
                 return $this->redirect(['site/login']);
             }else{
                 return $this->redirect(['site/index']);

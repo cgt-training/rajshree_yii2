@@ -35,34 +35,15 @@ use yii\helpers\Url;
                                     }                                 
 
                                     ?>
-                                </ul>
-
-
-                
+                                </ul>               
 
                             </li>
                         </ul>
                         <ul class="nav">
                             <li class="active">
                             <?= Html::a('Dashboard', ['site/index', 'id' => '']) ?>
-                            </li>
-                            
-                            <!-- <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Users <i class="caret"></i>
-
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a tabindex="-1" href="#">User List</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Search</a>
-                                    </li>
-                                    <li>
-                                        <a tabindex="-1" href="#">Permissions</a>
-                                    </li>
-                                </ul>
-                            </li> -->
+                            </li>                            
+                           
                         </ul>
                     </div>
                     <!--/.nav-collapse -->

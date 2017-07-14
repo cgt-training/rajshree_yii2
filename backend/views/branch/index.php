@@ -26,12 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-           // 'branch_id',
             ['attribute'=>'company_fk_id',
              'value' => 'companyFk.company_name',
               'label' => 'Company Name'
             ],    
-            //'company_fk_id',
             'branch_name',
             'branch_created',
             'branch_status',

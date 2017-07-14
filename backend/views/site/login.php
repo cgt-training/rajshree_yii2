@@ -19,11 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'password')->passwordInput(['class'=>'input-block-level'])->input('password', ['placeholder' => "Password"])->label(false)   ?>
 
-                <?php  //$form->field($model, 'rememberMe')->checkbox() ?>
                 <label class="checkbox">
                   <input type="checkbox" value="remember-me"> Remember me
                 </label>
-
+                
                 <div class="form-group">
                     <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>

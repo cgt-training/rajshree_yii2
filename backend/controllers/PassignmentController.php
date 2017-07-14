@@ -154,10 +154,9 @@ class PassignmentController extends Controller
             $request= Yii::$app->request->post(); 
             
             if($request['PassignmentSearch']['child']!=''){
-                //Passignment::deleteAll(['parent' => $model->parent]);
-
+               
                 $role = Yii::$app->authManager->getRole($model->parent);    
-                           
+
                 Yii::$app->authManager->removeChildren($role);                    
                
                 foreach($request['PassignmentSearch']['child'] as $key => $value) {                
@@ -185,11 +184,8 @@ class PassignmentController extends Controller
      * @return mixed
      */
     public function actionDelete($parent)
-    {
-       
-       // $this->findModel()->delete('where'=>'parent');
-         //Passignment::deleteAll(['parent' => $parent]);
-       
+    {       
+         
 
         $role = Yii::$app->authManager->getRole($parent);
         if ($role) {

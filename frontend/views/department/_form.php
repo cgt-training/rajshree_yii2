@@ -46,8 +46,6 @@ use kartik\date\DatePicker;
 ]);
 ?>
 
-    <?php //$form->field($model, 'department_created')->textInput() ?>
-
     <?= $form->field($model, 'department_status')->dropDownList([ 'active' => 'Active', 'inactive' => 'Inactive', ], ['prompt' => '']) ?>
 
     <div class="form-group">
